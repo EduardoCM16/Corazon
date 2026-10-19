@@ -1,0 +1,151 @@
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: #030003;
+  color: white;
+  font-family: "Segoe Script", cursive;
+}
+
+#ui {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.love {
+  position: absolute;
+  left: 50%;
+  top: 37%;
+  width: 0;
+  height: 0;
+  animation: heartPath 8s linear infinite;
+  animation-delay: calc(var(--i) * -0.08s);
+}
+
+.love_horizontal,
+.love_vertical {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.love_word {
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  color: #fff5fb;
+  font-size: clamp(10px, 1.3vw, 18px);
+  font-weight: bold;
+  font-style: italic;
+  text-shadow:
+    0 0 4px white,
+    0 0 8px #ff168e,
+    0 0 18px #ff168e,
+    0 0 30px #ff168e;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+
+@keyframes heartPath {
+  0% {
+    transform: translate(0, -65px);
+  }
+
+  12.5% {
+    transform: translate(0, -145px);
+  }
+
+  25% {
+    transform: translate(65px, -175px);
+  }
+
+  37.5% {
+    transform: translate(130px, -130px);
+  }
+
+  50% {
+    transform: translate(150px, -50px);
+  }
+
+  62.5% {
+    transform: translate(100px, 30px);
+  }
+
+  75% {
+    transform: translate(0, 115px);
+  }
+
+  87.5% {
+    transform: translate(-100px, 30px);
+  }
+
+  93% {
+    transform: translate(-150px, -50px);
+  }
+
+  97% {
+    transform: translate(-130px, -130px);
+  }
+
+  100% {
+    transform: translate(0, -65px);
+  }
+}
+
+
+@keyframes glow {
+  from {
+    opacity: .55;
+    filter: brightness(.8);
+  }
+  to {
+    opacity: 1;
+    filter: brightness(1.5);
+  }
+}
+
+.message {
+  position: absolute;
+  z-index: 10;
+  bottom: 5%;
+  width: 100%;
+  padding: 0 10px;
+  text-align: center;
+  pointer-events: none;
+  text-shadow: 0 0 10px #ff168e, 0 0 25px #ff168e;
+}
+
+.message h1 {
+  font-size: clamp(24px, 4vw, 48px);
+  font-weight: normal;
+}
+
+.message div {
+  font-size: clamp(20px, 3vw, 32px);
+}
+
+.message p {
+  font-size: clamp(16px, 2.5vw, 28px);
+  font-style: italic;
+}
+
+@media (max-width: 600px) {
+  .love {
+    transform-origin: center;
+  }
+
+  .message {
+    bottom: 3%;
+  }
+}
